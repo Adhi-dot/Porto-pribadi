@@ -4,6 +4,7 @@ from rich.panel import Panel
 from rich.prompt import Prompt, Confirm
 from pathlib import Path
 from organizer.core import organize_directory, undo_organization
+from organizer.config import load_custom_config
 
 app = typer.Typer(
     help="🤖 Pengatur File Otomatis - Merapikan file Anda dengan mudah dan aman.",
@@ -12,7 +13,11 @@ app = typer.Typer(
 console = Console()
 
 @app.callback(invoke_without_command=True)
-def main(ctx: typer.Context):
+def main(
+    ctx: typer.Context,
+    recursive: bool = typer.Option(False, "--recursive", "-r", help="Pindai sub-folder secara rekursif"),
+    config: str = typer.Option(None, "--config", "-c", help="Path file konfigurasi JSON kustom")
+):
     """
     Aplikasi Pengatur File Otomatis untuk Command Line.
     Jalankan tanpa argumen untuk masuk ke Mode Interaktif (Sangat disarankan untuk pemula).
@@ -50,7 +55,17 @@ def main(ctx: typer.Context):
         console.print(f"[bold red]❌ Error: Folder '{target_path}' tidak ditemukan![/bold red]")
         raise typer.Exit(code=1)
 
-    # 2. Pilih Mode (Dry Run atau Langsung)
+    # 2. Load custom config if provided
+    custom_categories = None
+    if config:
+        try:
+            custom_categories = load_custom_config(Path(config).expanduser().resolve())
+            console.print(f"[green]✔ Berhasil memuat konfigurasi kustom dari {config}[/green]")
+        except Exception as e:
+            console.print(f"[bold red]❌ Error config: {e}[/bold red]")
+            raise typer.Exit(code=1)
+
+    # 3. Pilih Mode (Dry Run atau Langsung)
     console.print("\n[bold]🛡️  Pilih mode eksekusi:[/bold]")
     console.print("  [1] Tampilkan pratinjau (Dry-Run) [green]- Aman, tidak langsung pindah[/green]")
     console.print("  [2] Langsung rapikan sekarang [yellow]- File langsung dipindahkan[/yellow]")
@@ -58,11 +73,16 @@ def main(ctx: typer.Context):
     mode_choice = Prompt.ask("Pilihan Anda", choices=["1", "2"], default="1")
     dry_run = (mode_choice == "1")
 
-    # 3. Eksekusi
+    # 4. Eksekusi
     console.print(f"\n[cyan]🔄 Memindai folder [bold]{target_path.name}[/bold]...[/cyan]")
 
     try:
-        count, ops = organize_directory(target_path, dry_run=dry_run)
+        count, ops = organize_directory(
+            target_path,
+            dry_run=dry_run,
+            recursive=recursive,
+            custom_categories=custom_categories
+        )
 
         if count == 0:
             console.print("[yellow]ℹ️  Tidak ada file yang perlu dirapikan di folder ini.[/yellow]")
@@ -77,8 +97,12 @@ def main(ctx: typer.Context):
 
             console.print("\n")
             if Confirm.ask("Apakah Anda ingin melanjutkan dan memindahkan file-file di atas?"):
-                # Run actual move
-                actual_count, _ = organize_directory(target_path, dry_run=False)
+                actual_count, _ = organize_directory(
+                    target_path,
+                    dry_run=False,
+                    recursive=recursive,
+                    custom_categories=custom_categories
+                )
                 console.print(f"\n[bold green]🎉 BERHASIL! {actual_count} file telah dirapikan ke tempatnya masing-masing.[/bold green]")
             else:
                 console.print("[yellow]❌ Dibatalkan oleh pengguna. Tidak ada file yang diubah.[/yellow]")
@@ -94,13 +118,28 @@ def main(ctx: typer.Context):
 def run_organizer(
     path: str = typer.Argument(..., help="Path folder yang ingin dirapikan"),
     dry_run: bool = typer.Option(False, "--dry-run", "-d", help="Tampilkan pratinjau tanpa memindahkan file"),
+    recursive: bool = typer.Option(False, "--recursive", "-r", help="Pindai sub-folder secara rekursif"),
+    config: str = typer.Option(None, "--config", "-c", help="Path file konfigurasi JSON kustom"),
 ):
     """Merapikan folder tertentu secara instan melalui command line."""
     target_path = Path(path).expanduser().resolve()
     console.print(f"[cyan]🔄 Memproses folder: {target_path}[/cyan]")
 
+    custom_categories = None
+    if config:
+        try:
+            custom_categories = load_custom_config(Path(config).expanduser().resolve())
+        except Exception as e:
+            console.print(f"[bold red]Error config: {e}[/bold red]")
+            raise typer.Exit(code=1)
+
     try:
-        count, ops = organize_directory(target_path, dry_run=dry_run)
+        count, ops = organize_directory(
+            target_path,
+            dry_run=dry_run,
+            recursive=recursive,
+            custom_categories=custom_categories
+        )
         if dry_run:
             console.print(f"[yellow]Pratinjau: {count} file akan dipindahkan.[/yellow]")
             for op in ops:

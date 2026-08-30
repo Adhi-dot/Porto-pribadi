@@ -1,25 +1,41 @@
 import shutil
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 from organizer.config import get_category_for_extension
 from organizer.logger import save_history, load_history, clear_history
 
-def organize_directory(target_path: Path, dry_run: bool = False) -> Tuple[int, List[Dict[str, str]]]:
+def organize_directory(
+    target_path: Path,
+    dry_run: bool = False,
+    recursive: bool = False,
+    custom_categories: Optional[Dict[str, List[str]]] = None
+) -> Tuple[int, List[Dict[str, str]]]:
     if not target_path.exists() or not target_path.is_dir():
         raise ValueError(f"Direktori '{target_path}' tidak ditemukan atau bukan folder.")
 
     operations = []
     success_count = 0
 
-    files = [f for f in target_path.iterdir() if f.is_file() and not f.name.startswith('.')]
+    # Determine files collection based on recursive flag
+    if recursive:
+        files = [f for f in target_path.rglob("*") if f.is_file() and not f.name.startswith('.') and target_path in f.parents]
+    else:
+        files = [f for f in target_path.iterdir() if f.is_file() and not f.name.startswith('.')]
 
     for file_path in files:
+        # Avoid moving files that are already inside category subfolders of target_path (especially in recursive mode)
+        if file_path.parent != target_path and not recursive:
+            continue
+
         ext = file_path.suffix
-        category = get_category_for_extension(ext)
+        category = get_category_for_extension(ext, custom_categories)
 
         category_dir = target_path / category
 
-        # Check if category_dir exists as a file
+        # If category_dir is the same parent as file_path (already in correct folder), skip
+        if file_path.parent == category_dir:
+            continue
+
         if category_dir.exists() and not category_dir.is_dir():
             raise ValueError(f"Konflik: Nama kategori '{category}' sudah digunakan oleh file biasa, bukan folder.")
 
@@ -44,8 +60,7 @@ def organize_directory(target_path: Path, dry_run: bool = False) -> Tuple[int, L
                     "to": str(destination_path.resolve())
                 })
                 success_count += 1
-            except Exception as e:
-                # If moving fails, skip this file or raise depending on preference. Here we log/skip safely.
+            except Exception:
                 continue
         else:
             operations.append({
