@@ -12,39 +12,50 @@ Utilitas baris perintah (*command-line utility*) yang dirancang khusus agar sang
 - **🔁 Pemindaian Rekursif (`--recursive`)**: Merapikan file hingga ke dalam sub-folder.
 - **⚙️ Konfigurasi Kustom (`--config`)**: Menentukan aturan dan kategori kategori file sesuai keinginan lewat file JSON.
 - **📊 Statistik Folder (`stats`)**: Melihat jumlah file, ukuran total, dan distribusi per kategori dalam bentuk tabel rapi.
-- **👀 Watch Mode (`watch`)**: Memantau folder secara *real-time* — file baru yang masuk akan otomatis dirapikan seketika.
+- **👀 Watch Mode & Notifikasi Desktop (`watch`)**: Memantau folder secara *real-time* dengan notifikasi sistem Windows saat file baru otomatis dirapikan.
+- **⚡ Instalasi Mudah (`setup.bat`)**: Cukup *double-click* file `setup.bat` bagi pengguna Windows awam untuk instalasi otomatis.
 
 ---
 
 ## 📦 Instalasi & Cara Menjalankan
 
-1. **Prasyarat**: Pastikan Python 3.10+ terinstal di komputer Anda.
-2. **Install Dependensi & Paket Secara Global**:
+### Cara 1: Untuk Pengguna Windows Awam (Paling Mudah)
+1. Unduh atau clone repositori ini.
+2. Klik dua kali pada file **`setup.bat`**. Skrip akan otomatis menginstal semua kebutuhan dan mendaftarkan perintah `file-org`.
+3. Buka Command Prompt / PowerShell, lalu ketik:
    ```bash
+   file-org
+   ```
+
+### Cara 2: Instalasi Manual via Terminal
+1. **Prasyarat**: Pastikan Python 3.10+ terinstal.
+2. **Install Dependensi & Paket**:
+   ```bash
+   pip install -r requirements.txt
    pip install -e .
    ```
-3. **Menjalankan Aplikasi**:
-   - **Mode Interaktif (Pemula):**
-     ```bash
-     file-org
-     ```
-   - **Mode Instan (Folder tertentu):**
-     ```bash
-     file-org run ~/Downloads
-     ```
-   - **Melihat Pratinjau (Dry-Run):**
-     ```bash
-     file-org run ~/Downloads --dry-run
-     ```
-   - **Melihat Statistik Folder:**
-     ```bash
-     file-org stats ~/Downloads
-     ```
-   - **Pemantauan Otomatis (Watch Mode):**
-     ```bash
-     file-org watch ~/Downloads
-     ```
-   - **Membatalkan Aksi Terakhir (Undo):**
-     ```bash
-     file-org undo ~/Downloads
-     ```
+
+---
+
+## 🚀 Perintah yang Tersedia
+
+- **Mode Interaktif (Wizard):**
+  ```bash
+  file-org
+  ```
+- **Merapikan Folder Instan:**
+  ```bash
+  file-org run ~/Downloads --recursive
+  ```
+- **Melihat Statistik Folder:**
+  ```bash
+  file-org stats ~/Downloads
+  ```
+- **Pemantauan Otomatis (Watch Mode):**
+  ```bash
+  file-org watch ~/Downloads
+  ```
+- **Membatalkan Aksi Terakhir (Undo):**
+  ```bash
+  file-org undo ~/Downloads
+  ```
