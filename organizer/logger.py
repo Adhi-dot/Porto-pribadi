@@ -9,13 +9,13 @@ def save_history(target_dir: Path, operations: List[Dict[str, str]]):
     history_path = target_dir / LOG_FILE_NAME
     data = {
         "timestamp": datetime.now().isoformat(),
-        "operations": operations # list of {"from": ..., "to": ...}
+        "operations": operations
     }
     try:
         with open(history_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     except Exception as e:
-        pass
+        raise IOError(f"Gagal menyimpan riwayat undo ke {history_path}: {e}")
 
 def load_history(target_dir: Path) -> Dict[str, Any]:
     history_path = target_dir / LOG_FILE_NAME
@@ -24,8 +24,8 @@ def load_history(target_dir: Path) -> Dict[str, Any]:
     try:
         with open(history_path, "r", encoding="utf-8") as f:
             return json.load(f)
-    except Exception:
-        return {}
+    except Exception as e:
+        raise IOError(f"Gagal membaca riwayat undo dari {history_path}: {e}")
 
 def clear_history(target_dir: Path):
     history_path = target_dir / LOG_FILE_NAME

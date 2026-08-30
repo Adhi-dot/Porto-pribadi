@@ -11,7 +11,6 @@ def organize_directory(target_path: Path, dry_run: bool = False) -> Tuple[int, L
     operations = []
     success_count = 0
 
-    # Scan files in the target directory (non-recursive for simplicity, or top-level files)
     files = [f for f in target_path.iterdir() if f.is_file() and not f.name.startswith('.')]
 
     for file_path in files:
@@ -19,6 +18,11 @@ def organize_directory(target_path: Path, dry_run: bool = False) -> Tuple[int, L
         category = get_category_for_extension(ext)
 
         category_dir = target_path / category
+
+        # Check if category_dir exists as a file
+        if category_dir.exists() and not category_dir.is_dir():
+            raise ValueError(f"Konflik: Nama kategori '{category}' sudah digunakan oleh file biasa, bukan folder.")
+
         destination_path = category_dir / file_path.name
 
         # Handle name collision
@@ -31,16 +35,24 @@ def organize_directory(target_path: Path, dry_run: bool = False) -> Tuple[int, L
                     break
                 counter += 1
 
-        operations.append({
-            "from": str(file_path.resolve()),
-            "to": str(destination_path.resolve())
-        })
-
         if not dry_run:
-            category_dir.mkdir(exist_ok=True, parents=True)
-            shutil.move(str(file_path), str(destination_path))
-
-        success_count += 1
+            try:
+                category_dir.mkdir(exist_ok=True, parents=True)
+                shutil.move(str(file_path), str(destination_path))
+                operations.append({
+                    "from": str(file_path.resolve()),
+                    "to": str(destination_path.resolve())
+                })
+                success_count += 1
+            except Exception as e:
+                # If moving fails, skip this file or raise depending on preference. Here we log/skip safely.
+                continue
+        else:
+            operations.append({
+                "from": str(file_path.resolve()),
+                "to": str(destination_path.resolve())
+            })
+            success_count += 1
 
     if not dry_run and operations:
         save_history(target_path, operations)
@@ -61,20 +73,24 @@ def undo_organization(target_path: Path) -> int:
         dest = Path(op["from"])
 
         if src.exists():
-            dest.parent.mkdir(exist_ok=True, parents=True)
-            shutil.move(str(src), str(dest))
-            undo_count += 1
+            try:
+                dest.parent.mkdir(exist_ok=True, parents=True)
+                shutil.move(str(src), str(dest))
+                undo_count += 1
+            except Exception:
+                continue
 
     # Clean up empty category directories created during organization
     for op in operations:
         cat_dir = Path(op["to"]).parent
-        if cat_dir.exists() and cat_dir != target_path:
+        if cat_dir.exists() and cat_dir.is_dir() and cat_dir != target_path:
             try:
-                # Remove only if empty
                 if not any(cat_dir.iterdir()):
                     cat_dir.rmdir()
             except Exception:
                 pass
 
-    clear_history(target_path)
+    if undo_count > 0:
+        clear_history(target_path)
+
     return undo_count
