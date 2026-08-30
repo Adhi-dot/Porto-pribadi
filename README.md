@@ -1,6 +1,6 @@
 # 🤖 Pengatur File Otomatis (CLI Auto File Organizer)
 
-Utilitas baris perintah (*command-line utility*) yang dirancang khusus agar sangat mudah digunakan oleh siapa saja (termasuk orang awam) untuk merepikan folder yang berantakan seperti `Downloads` atau `Desktop` secara otomatis.
+Utilitas baris perintah (*command-line utility*) yang dirancang khusus agar sangat mudah digunakan oleh siapa saja (termasuk orang awam) untuk merapikan folder yang berantakan seperti `Downloads` atau `Desktop` secara otomatis.
 
 ---
 
@@ -9,30 +9,42 @@ Utilitas baris perintah (*command-line utility*) yang dirancang khusus agar sang
 - **📂 Pengelompokan Pintar**: Memilah file secara otomatis ke dalam kategori: *Dokumen*, *Gambar*, *Video*, *Audio*, *Arsip*, *Kode & Pemrograman*, dan *Lainnya*.
 - **🛡️ Aman dengan Pratinjau (Dry-Run)**: Lihat simulasi perpindahan file sebelum benar-benar dipindahkan.
 - **↩️ Fitur Undo**: Salah pindah? Cukup ketik `file-org undo` untuk mengembalikan file ke posisi semula seketika.
+- **🔁 Pemindaian Rekursif (`--recursive`)**: Merapikan file hingga ke dalam sub-folder.
+- **⚙️ Konfigurasi Kustom (`--config`)**: Menentukan aturan dan kategori kategori file sesuai keinginan lewat file JSON.
+- **📊 Statistik Folder (`stats`)**: Melihat jumlah file, ukuran total, dan distribusi per kategori dalam bentuk tabel rapi.
+- **👀 Watch Mode (`watch`)**: Memantau folder secara *real-time* — file baru yang masuk akan otomatis dirapikan seketika.
 
 ---
 
 ## 📦 Instalasi & Cara Menjalankan
 
 1. **Prasyarat**: Pastikan Python 3.10+ terinstal di komputer Anda.
-2. **Install Dependensi**:
+2. **Install Dependensi & Paket Secara Global**:
    ```bash
-   pip install -r requirements.txt
+   pip install -e .
    ```
 3. **Menjalankan Aplikasi**:
    - **Mode Interaktif (Pemula):**
      ```bash
-     python -m organizer.cli
+     file-org
      ```
    - **Mode Instan (Folder tertentu):**
      ```bash
-     python -m organizer.cli run ~/Downloads
+     file-org run ~/Downloads
      ```
    - **Melihat Pratinjau (Dry-Run):**
      ```bash
-     python -m organizer.cli run ~/Downloads --dry-run
+     file-org run ~/Downloads --dry-run
+     ```
+   - **Melihat Statistik Folder:**
+     ```bash
+     file-org stats ~/Downloads
+     ```
+   - **Pemantauan Otomatis (Watch Mode):**
+     ```bash
+     file-org watch ~/Downloads
      ```
    - **Membatalkan Aksi Terakhir (Undo):**
      ```bash
-     python -m organizer.cli undo ~/Downloads
+     file-org undo ~/Downloads
      ```
