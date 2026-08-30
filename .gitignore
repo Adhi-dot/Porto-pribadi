@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.file_organizer_history.json
+venv/
+.venv/
+.env
