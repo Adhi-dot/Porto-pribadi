@@ -25,8 +25,16 @@ def organize_directory(
         if file_path.parent != target_path and not recursive:
             continue
 
+        if file_path.is_symlink():
+            continue
+
         ext = file_path.suffix
-        category = get_category_for_extension(ext, custom_categories)
+        raw_category = get_category_for_extension(ext, custom_categories)
+
+        # Sanitize category name to prevent path traversal
+        category = Path(raw_category).name
+        if not category or category in (".", ".."):
+            category = "Lainnya"
 
         category_dir = target_path / category
 
@@ -37,6 +45,15 @@ def organize_directory(
             raise ValueError(f"Konflik: Nama kategori '{category}' sudah digunakan oleh file biasa, bukan folder.")
 
         destination_path = category_dir / file_path.name
+
+        # Validate destination is strictly inside target_path
+        try:
+            resolved_target = target_path.resolve()
+            resolved_dest = destination_path.resolve()
+            if not resolved_dest.is_relative_to(resolved_target):
+                continue
+        except Exception:
+            continue
 
         if destination_path.exists() and destination_path != file_path:
             counter = 1
