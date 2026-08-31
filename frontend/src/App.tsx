@@ -140,7 +140,7 @@ export default function App() {
             </div>
           </div>
           <div className="text-xs bg-pink-100 text-pink-600 px-3.5 py-1.5 rounded-full border border-pink-200 font-medium shadow-sm hidden sm:flex items-center gap-1.5">
-            <Smile className="w-3.5 h-3.5 text-pink-500" /> Semangat terus cantikk! 💖
+            <Smile className="w-3.5 h-3.5 text-pink-500" /> Semangat terus dekk
           </div>
         </div>
       </header>
@@ -156,10 +156,10 @@ export default function App() {
             <div className="p-1.5 bg-pink-100 rounded-xl text-pink-500">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h2 className="text-base font-bold text-slate-800">Ceritain Unek-Unek & Jadwalmu Hari Ini 💌</h2>
+            <h2 className="text-base font-bold text-slate-800">Ceritain Unek-Unek & Jadwal kamu Hari Ini 💌</h2>
           </div>
           <p className="text-xs text-slate-500 mb-4 leading-relaxed">
-            Lagi pusing tugas sekolah, deadline lomba, atau capek abis les? Tulis aja semuanya di bawah ini. Kakak AI bakal otomatis beresin dan pecah jadi tugas kecil yang gemes & gampang dicicil! 🧸✨
+            Lagi pusing tugas sekolah, deadline lomba, atau capek abis les? Tulis aja semuanya di bawah ini. AI bakal otomatis beresin dan pecah jadi tugas kecil yang gemes & gampang dicicil! 🧸✨
           </p>
 
           <form onSubmit={handleBrainDump} className="space-y-4">
@@ -187,7 +187,7 @@ export default function App() {
                 ) : (
                   <>
                     <Sparkles className="w-4 h-4" />
-                    <span>Atur Jadwal & Tugas Gw! 💖</span>
+                    <span>Atur Jadwal & Tugas</span>
                   </>
                 )}
               </button>
@@ -367,7 +367,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-pink-200/80 py-6 text-center text-xs text-pink-600/80 mt-12 bg-white/40 backdrop-blur-sm">
         <p className="flex items-center justify-center gap-1 font-medium">
-          The 11th-Grade War Room &bull; Dibuat dengan <Heart className="w-3.5 h-3.5 fill-pink-400 text-pink-400 inline" /> dan semangat pink buat menemani masa SMA kamu! 💖✨
+          The 11th-Grade War Room
         </p>
       </footer>
     </div>
