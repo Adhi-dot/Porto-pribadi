@@ -1,61 +1,24 @@
-# 🤖 Pengatur File Otomatis (CLI Auto File Organizer)
+# 🛡️ The 11th-Grade War Room (Anti-Burnout Hustle & Sanity Co-Pilot)
 
-Utilitas baris perintah (*command-line utility*) yang dirancang khusus agar sangat mudah digunakan oleh siapa saja (termasuk orang awam) untuk merapikan folder yang berantakan seperti `Downloads` atau `Desktop` secara otomatis.
+Aplikasi *Full-Stack* berbasis AI yang dirancang khusus untuk anak SMA kelas 11 yang sedang mengalami *burnout* (menyeimbangkan sekolah, lomba, les, dan kehidupan pribadi).
 
----
-
-## ✨ Fitur Utama
-- **🧙‍♂️ Mode Interaktif (Wizard)**: Cukup ketik `file-org` tanpa parameter, dan panduan interaktif berbahasa Indonesia akan menuntun Anda langkah demi langkah.
-- **📂 Pengelompokan Pintar**: Memilah file secara otomatis ke dalam kategori: *Dokumen*, *Gambar*, *Video*, *Audio*, *Arsip*, *Kode & Pemrograman*, dan *Lainnya*.
-- **🛡️ Aman dengan Pratinjau (Dry-Run)**: Lihat simulasi perpindahan file sebelum benar-benar dipindahkan.
-- **↩️ Fitur Undo**: Salah pindah? Cukup ketik `file-org undo` untuk mengembalikan file ke posisi semula seketika.
-- **🔁 Pemindaian Rekursif (`--recursive`)**: Merapikan file hingga ke dalam sub-folder.
-- **⚙️ Konfigurasi Kustom (`--config`)**: Menentukan aturan dan kategori kategori file sesuai keinginan lewat file JSON.
-- **📊 Statistik Folder (`stats`)**: Melihat jumlah file, ukuran total, dan distribusi per kategori dalam bentuk tabel rapi.
-- **👀 Watch Mode & Notifikasi Desktop (`watch`)**: Memantau folder secara *real-time* dengan notifikasi sistem Windows saat file baru otomatis dirapikan.
-- **⚡ Instalasi Mudah (`setup.bat`)**: Cukup *double-click* file `setup.bat` bagi pengguna Windows awam untuk instalasi otomatis.
+Karena dibuat khusus untuk anak yang **belum pernah nyemplung ke dunia teknologi**, aplikasi ini mengusung konsep **Zero-Friction**:
+1. **Brain Dump (Unek-Unek Box)**: Cukup ketik curhatan atau daftar tugas secara acak. AI akan otomatis mengorganisir, mengkategorikan, dan memberikan estimasi waktu.
+2. **Micro-Task Breakdown**: Tugas besar (seperti proposal lomba atau PR susah) dipecah otomatis menjadi langkah-langkah kecil berdurasi 15–30 menit agar tidak bikin pusing.
+3. **Kakak Kelas Vibe**: Pesan motivasi dan semangat yang hangat, suportif, dan relevan dengan kehidupan anak SMA.
 
 ---
 
-## 📦 Instalasi & Cara Menjalankan
+## 🚀 Cara Menjalankan (Cukup 1 Klik!)
 
-### Cara 1: Untuk Pengguna Windows Awam (Paling Mudah)
-1. Unduh atau clone repositori ini.
-2. Klik dua kali pada file **`setup.bat`**. Skrip akan otomatis menginstal semua kebutuhan dan mendaftarkan perintah `file-org`.
-3. Buka Command Prompt / PowerShell, lalu ketik:
-   ```bash
-   file-org
-   ```
-
-### Cara 2: Instalasi Manual via Terminal
-1. **Prasyarat**: Pastikan Python 3.10+ terinstal.
-2. **Install Dependensi & Paket**:
-   ```bash
-   pip install -r requirements.txt
-   pip install -e .
-   ```
+1. Pastikan **Node.js** sudah terinstal di komputer.
+2. Klik dua kali pada file **`start.bat`** di folder utama.
+3. Script otomatis akan menginstal dependensi, menyiapkan database SQLite, dan membuka 2 jendela terminal untuk Backend (Port 5000) & Frontend (Port 5173).
+4. Buka browser dan akses: **`http://localhost:5173`**
 
 ---
 
-## 🚀 Perintah yang Tersedia
-
-- **Mode Interaktif (Wizard):**
-  ```bash
-  file-org
-  ```
-- **Merapikan Folder Instan:**
-  ```bash
-  file-org run ~/Downloads --recursive
-  ```
-- **Melihat Statistik Folder:**
-  ```bash
-  file-org stats ~/Downloads
-  ```
-- **Pemantauan Otomatis (Watch Mode):**
-  ```bash
-  file-org watch ~/Downloads
-  ```
-- **Membatalkan Aksi Terakhir (Undo):**
-  ```bash
-  file-org undo ~/Downloads
-  ```
+## 🛠️ Stack Teknologi
+- **Backend**: Node.js, Express, TypeScript, Prisma ORM, SQLite.
+- **Frontend**: React 18, Vite, TypeScript, Tailwind CSS, Lucide Icons.
+- **AI Integration**: Gemini API & Smart Heuristic Parser (Kakak Kelas Persona).
