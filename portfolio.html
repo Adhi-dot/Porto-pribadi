@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhi Kurnia Nugraha — AI Agent Enthusiast & Informatics Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0b0b0e',
+                        surface: '#141419',
+                        surfaceHover: '#1c1c24',
+                        accent: '#f59e0b',
+                        accentHover: '#d97706',
+                        muted: '#9e9ea6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-slate-100 font-sans antialiased selection:bg-accent selection:text-obsidian min-h-screen">
+
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-obsidian/80 border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-mono font-bold text-sm tracking-tight text-accent flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                adhi@kurnia:~#
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+                <a href="#about" class="hover:text-slate-100 transition-colors">Tentang</a>
+                <a href="#philosophy" class="hover:text-slate-100 transition-colors">AI & Agen</a>
+                <a href="#skills" class="hover:text-slate-100 transition-colors">Keahlian</a>
+                <a href="#projects" class="hover:text-slate-100 transition-colors">Proyek</a>
+                <a href="#contact" class="hover:text-slate-100 transition-colors">Kontak</a>
+            </nav>
+            <a href="https://github.com/Adhi-dot" target="_blank" class="font-mono text-xs px-4 py-2 rounded-lg bg-surface hover:bg-surfaceHover border border-white/10 transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-28">
+
+        <!-- Hero Section -->
+        <section class="space-y-8 pt-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-xs font-mono text-accent">
+                <span>Institut Teknologi Sains Bandung</span>
+                <span class="text-white/20">•</span>
+                <span>Informatika 2026</span>
+            </div>
+
+            <div class="space-y-4">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-100">
+                    Adhi Kurnia Nugraha
+                </h1>
+                <p class="text-xl md:text-2xl text-muted font-mono max-w-2xl">
+                    Informatics student exploring autonomous AI agents, logic building, and workflow automation.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-surface border border-white/10 font-mono text-sm text-accent max-w-xl flex items-center gap-3">
+                <span class="text-lg">⚡</span>
+                <span>"Get out from that f*cking comfort zone"</span>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#projects" class="px-6 py-3 rounded-lg bg-accent text-obsidian font-semibold hover:bg-accentHover transition-colors">
+                    Lihat Proyek
+                </a>
+                <a href="#contact" class="px-6 py-3 rounded-lg bg-surface hover:bg-surfaceHover border border-white/10 font-medium transition-colors">
+                    Hubungi Saya
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3 font-mono">
+                    <span class="text-accent">01.</span> Tentang Saya
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-2 space-y-4 text-slate-300 leading-relaxed">
+                    <p>
+                        Halo, nama saya <strong class="text-slate-100">Adhi Kurnia Nugraha</strong> (biasa dipanggil <strong>Adhi</strong>). Saya adalah mahasiswa semester 1 jurusan Informatika di <span class="text-slate-100">Institut Teknologi Sains Bandung (ITSB)</span> dan lulusan SMAN 6 Tambun Selatan.
+                    </p>
+                    <p>
+                        Di luar dunia akademik perkuliahan, saya memiliki ketertarikan mendalam pada teknologi kecerdasan buatan, khususnya <strong class="text-slate-100">AI agent</strong>. Saya percaya bahwa membangun sistem dan mentalitas penggunaan AI adalah kunci ketahanan karier di masa depan.
+                    </p>
+                    <p>
+                        Selain dunia pemrograman, saya memiliki pengalaman mengajar sebagai guru les privat. Pengalaman ini mengasah kemampuan komunikasi saya dalam menjelaskan konsep teknis yang rumit kepada orang awam, serta melatih manajemen waktu antara kehidupan kuliah, pribadi, dan pengajaran.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-surface border border-white/10 space-y-4 font-mono text-xs">
+                    <div class="text-accent font-bold uppercase tracking-wider">Info Cepat</div>
+                    <div class="space-y-2 text-slate-300">
+                        <div><span class="text-muted">Pendidikan:</span> S1 Informatika, ITSB</div>
+                        <div><span class="text-muted">Asal Sekolah:</span> SMAN 6 Tambun Selatan</div>
+                        <div><span class="text-muted">Fokus:</span> AI Agents & Python</div>
+                        <div><span class="text-muted">Lokasi:</span> Indonesia</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Philosophy & Agents -->
+        <section id="philosophy" class="space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3 font-mono">
+                    <span class="text-accent">02.</span> AI Agent Philosophy
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 rounded-xl bg-surface border border-white/10 space-y-4">
+                    <h3 class="font-mono font-bold text-lg text-slate-100 flex items-center gap-2">
+                        <span class="text-accent">&gt;</span> Chatbot vs. AI Agent
+                    </h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Banyak orang mengira AI agent sama saja dengan chatbot biasa karena sama-sama bisa menjawab pertanyaan. Namun perbedaannya sangat mendasar: chatbot hanyalah percakapan dengan otak model, sedangkan <strong>AI agent memiliki "tangan" dan "kaki" tambahan</strong>.
+                    </p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        "Kaki" mereka memungkinkan pencarian file independen secara lokal, dan "tangan" mereka dapat menulis kode secara langsung. Peran saya sebagai manusia adalah sebagai <em>Human-in-the-loop</em> yang mengarahkan.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-surface border border-white/10 space-y-4">
+                    <h3 class="font-mono font-bold text-lg text-slate-100 flex items-center gap-2">
+                        <span class="text-accent">&gt;</span> Eksperimen Toolset
+                    </h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Meskipun bagi kebanyakan orang satu AI agent sudah cukup, saya memiliki rasa penasaran tinggi untuk mencoba berbagai ekosistem AI code agent:
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-accent">Claude Code</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">Antigravity</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">Gemini CLI</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">Hermes</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">UTIM</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">OpenCode</span>
+                        <span class="px-2.5 py-1 rounded bg-obsidian border border-white/10 text-slate-300">Codex</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Experience -->
+        <section id="skills" class="space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3 font-mono">
+                    <span class="text-accent">03.</span> Keahlian & Pengalaman
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="font-mono text-sm uppercase tracking-wider text-muted">Hard & Soft Skills</h3>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="font-semibold text-slate-100 mb-1">Python & Logic Building</div>
+                            <p class="text-sm text-muted">Membangun fondasi logika pemrograman dan otomatisasi script harian.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="font-semibold text-slate-100 mb-1">Markdown & Prompt Architecture</div>
+                            <p class="text-sm text-muted">Menyusun instruksi terstruktur (.md) agar AI agent dapat bekerja secara optimal.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="font-semibold text-slate-100 mb-1">Komunikasi & Public Speaking</div>
+                            <p class="text-sm text-muted">Berpengalaman mengajar privat dan menjembatani konsep teknis ke audiens non-teknis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-mono text-sm uppercase tracking-wider text-muted">Riwayat & Aktivitas</h3>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="font-semibold text-slate-100">Mahasiswa Informatika</span>
+                                <span class="font-mono text-xs text-accent">2026 - Sekarang</span>
+                            </div>
+                            <p class="text-sm text-muted">Institut Teknologi Sains Bandung (ITSB)</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="font-semibold text-slate-100">Guru Les Privat</span>
+                                <span class="font-mono text-xs text-accent">Berpengalaman</span>
+                            </div>
+                            <p class="text-sm text-muted">Mengajar dan membimbing siswa dengan metode komunikasi yang mudah dipahami.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface border border-white/10">
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="font-semibold text-slate-100">Builder & Creator</span>
+                                <span class="font-mono text-xs text-accent">Aktif</span>
+                            </div>
+                            <p class="text-sm text-muted">Membangun berbagai proyek kecil untuk memudahkan kehidupan mahasiswa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="space-y-8">
+            <div class="border-b border-white/10 pb-4 flex justify-between items-end">
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3 font-mono">
+                    <span class="text-accent">04.</span> Proyek GitHub
+                </h2>
+                <a href="https://github.com/Adhi-dot" target="_blank" class="font-mono text-xs text-accent hover:underline flex items-center gap-1">
+                    Lihat Semua Repositori →
+                </a>
+            </div>
+
+            <div class="p-8 rounded-2xl bg-surface border border-white/10 text-center space-y-6">
+                <div class="max-w-md mx-auto space-y-2">
+                    <h3 class="text-xl font-bold text-slate-100">Eksplorasi & Repository GitHub</h3>
+                    <p class="text-sm text-muted">
+                        Sebagai mahasiswa Informatika, saya secara rutin mempublikasikan berbagai eksperimen kode, alat bantu otomatisasi mahasiswa, dan implementasi AI agent di GitHub saya.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://github.com/Adhi-dot" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-obsidian font-semibold hover:bg-accentHover transition-colors font-mono text-sm">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        Kunjungi github.com/Adhi-dot
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3 font-mono">
+                    <span class="text-accent">05.</span> Hubungi Saya
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="mailto:adhinugraha2228@gmail.com" class="p-5 rounded-xl bg-surface hover:bg-surfaceHover border border-white/10 transition-colors space-y-2 group">
+                    <div class="font-mono text-xs text-muted">Email</div>
+                    <div class="font-medium text-slate-100 group-hover:text-accent transition-colors truncate">adhinugraha2228@gmail.com</div>
+                </a>
+
+                <a href="https://wa.me/6287765200809" target="_blank" class="p-5 rounded-xl bg-surface hover:bg-surfaceHover border border-white/10 transition-colors space-y-2 group">
+                    <div class="font-mono text-xs text-muted">WhatsApp</div>
+                    <div class="font-medium text-slate-100 group-hover:text-accent transition-colors">0877 6520 0809</div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/adhi-kurnia-nugraha-28aa09404" target="_blank" class="p-5 rounded-xl bg-surface hover:bg-surfaceHover border border-white/10 transition-colors space-y-2 group">
+                    <div class="font-mono text-xs text-muted">LinkedIn</div>
+                    <div class="font-medium text-slate-100 group-hover:text-accent transition-colors truncate">Adhi Kurnia Nugraha</div>
+                </a>
+
+                <a href="https://www.instagram.com/The1existdhi" target="_blank" class="p-5 rounded-xl bg-surface hover:bg-surfaceHover border border-white/10 transition-colors space-y-2 group">
+                    <div class="font-mono text-xs text-muted">Instagram</div>
+                    <div class="font-medium text-slate-100 group-hover:text-accent transition-colors">@The1existdhi</div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 mt-28 py-8 bg-surface/50">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-muted">
+            <div>© 2026 Adhi Kurnia Nugraha. All rights reserved.</div>
+            <div class="flex items-center gap-2">
+                <span>Built with precision & anti-AI-slop design</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
